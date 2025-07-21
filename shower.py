@@ -83,3 +83,6 @@ def render_all_from_alters():
             apply_pixel_changes(data)
             screen.show()  # 每帧渲染后刷新屏幕
             sleep(0.01)  # 每帧之间延时 10ms
+
+if __name__ == '__main__':
+    render_all_from_alters()

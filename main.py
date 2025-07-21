@@ -74,8 +74,8 @@ def process_images_and_save_batches(batch_threshold=255):
 def compare_batch_images_and_save_diffs():
     '''
     使用batches文件夹中的数据，比较前一个图片和后一个元素的像素区别，
-    根据这些区别的像素位置（在128x64的屏幕上的x,y坐标，从上到下y从1开始增大到64，
-    从左到右x从1开始增大到128）及更改类型（由白变黑或者由黑变白），
+    根据这些区别的像素位置（在128x64的屏幕上的x,y坐标，从上到下y从0开始增大到63，
+    从左到右x从0开始增大到127）及更改类型（由白变黑或者由黑变白），
     重新输出一个新的字典，字典的每一项索引仍为编号，内容是一个列表，
     列表有两项，第一项存储由白转黑的像素的x、y坐标，
     第二项存储由黑转白的像素的x、y坐标，这些x、y坐标也用一个列表表示，比如[12,34]。
@@ -130,8 +130,8 @@ def compare_batch_images_and_save_diffs():
 
                 if prev_bit != current_bit:
                     # 计算 x, y 坐标
-                    y = i // 128 + 1
-                    x = i % 128 + 1
+                    y = i // 128
+                    x = i % 128
 
                     if prev_bit == '1' and current_bit == '0':
                         white_to_black.append([x, y])
